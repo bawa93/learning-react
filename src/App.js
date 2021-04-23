@@ -1,11 +1,20 @@
 import React from 'react'
 import Hello from './Hello.js';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement } from './actions/index'
 import './App.css'
 import Users from './Users.js';
 function App() {
   const counter = useSelector(state => state.counter)
-  return (<div>Counter: { counter} <Users></Users></div>);
+  const isLogged = useSelector(state => state.isLogged)
+
+  const dispatch = useDispatch();
+  
+  return (<div>Counter: { counter}
+    <button onClick={() => dispatch(increment(5))}>Increment</button>
+    <button onClick={() => dispatch(decrement(2))}>Decrement</button>
+    { isLogged ? <h3>Secret Info</h3> : ''}
+    <Users></Users></div>);
 }
 
 export default App;
