@@ -26,7 +26,7 @@ const decrement = ()=> {
 }
 
 // reducers 
-const Reducer = (state=0, action) => {
+const counterReducer = (state=0, action) => {
   switch (action.type) {
     case "INCREMENT":
       return state + 1;
@@ -36,7 +36,7 @@ const Reducer = (state=0, action) => {
 }
 // dispatch 
 
-const store = createStore(Reducer)
+const store = createStore(counterReducer)
 
 store.subscribe(() => console.log(store.getState()))
 
