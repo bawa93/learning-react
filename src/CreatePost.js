@@ -1,16 +1,18 @@
 import {useEffect, useState} from "react";
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import useFetch from "./useFetch";
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [info, setInfo] = useState('');
+    const history = useHistory()
     const handleSubmit = (e) => {
         e.preventDefault();
         const job = { title, info}
 
         console.log(job)
         // make post request
+        history.push('/')
     }
     return (<div>
         <form onSubmit={handleSubmit}>
