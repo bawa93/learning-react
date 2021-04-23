@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 
-const useFetch = (url) => {
+const useFetch = (url, isCollection=true) => {
     const abortCont = new AbortController();
-    const [posts, setPosts] = useState([]);
+    const [data, setData] = useState([]);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
     useEffect(() => {
@@ -12,7 +12,13 @@ const useFetch = (url) => {
             }).then(data => {
                 setIsPending(false)
                 console.log(data)
-                setPosts(data.result.data)
+                let result = ''
+                if(isCollection) {
+                    result = data.result.data;
+                } else {
+                    result = data.result
+                }
+                setData(result)
             }).catch(error => {
                 if (error.name === 'AbortError') {
                     console.log('abort error')
@@ -22,8 +28,8 @@ const useFetch = (url) => {
             });
         }, 1000)
         return () => abortCont.abort()
-    }, [posts])
-    return {posts, isPending, error}
+    }, [data])
+    return {data, isPending, error}
 }
 export default useFetch
 

@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css'
 import Users from './Users.js';
 import Posts from "./Posts";
+import Post from "./Post";
+
 import Counter from "./Counter";
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
   return (<Router><div>
     { isLogged ? <h3>Secret Info</h3> : ''}
   <Switch>
+    <Route path="/posts/:id"><Post></Post></Route>
     <Route path="/posts"><Posts></Posts></Route>
+
     <Route path="/users"><Users></Users></Route>
     <Route path="/counter"><Counter></Counter></Route>
   </Switch>
