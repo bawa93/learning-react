@@ -1,7 +1,5 @@
 import React from 'react'
-import Hello from './Hello.js';
-import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement } from './actions/index'
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import './App.css'
