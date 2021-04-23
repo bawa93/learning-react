@@ -5,18 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 import allReducers from './reducers/index'
 
+
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+  <Provider store={store}><React.StrictMode><App /></React.StrictMode></Provider>
+  ,
   document.getElementById('root')
 );
 
 
-
-const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 store.subscribe(() => console.log(store.getState()))
 
