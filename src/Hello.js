@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 function Hello(props) {
-    return (<div>Hello { props.name }</div>);
+    const [helloCount, setHelloCount] = useState(0)
+    
+    const incrementHelloCount = () => {
+        setHelloCount(helloCount+1)
+    }
+    return (<div>Hello { props.name} { helloCount} <button onClick={incrementHelloCount}>Increment Hello count</button></div>);
 }
 
 export default Hello;
